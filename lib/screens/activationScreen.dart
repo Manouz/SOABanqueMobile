@@ -28,16 +28,39 @@ class _ActivationScreenState extends State<ActivationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          Text("Renseignements Personnels "),
-          Text("Veuillez fournir les renseignements personnels ci-dessous"),
-          Textformfield("Prénoms"),
-          Textformfield("Nom"),
-          Textformfield("Entrez votre adresse Email"),
-          Text("Veuillez sélectionner le sexe "),
-          TextLink(clef: 'Continuer')
-        ],
+      body: Center(
+        child: Column(
+          children: [
+            Text("Renseignements Personnels "),
+            Text("Veuillez fournir les renseignements personnels ci-dessous"),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  label: Text("Prénoms")
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  label: Text("Nom")
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  label: Text("Entrez votre addresse Email")
+                ),
+              ),
+            ),
+            Text("Veuillez sélectionner le sexe "),
+            TextLink(clef: 'Continuer')
+          ],
+        ),
       ),
     );
   }
