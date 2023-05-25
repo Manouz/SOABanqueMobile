@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "810176372265",
+    "project_id": "soabanque",
+    "storage_bucket": "soabanque.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810176372265:android:cdb2997c6a4d6953380638",
+        "android_client_info": {
+          "package_name": "com.example.soabanque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810176372265-0bej0rbgl99n5gd4186s74bsvlj3t8ag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZFxgL8N2F42-UNlzJtP-aPSGYwQXCcD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810176372265-0bej0rbgl99n5gd4186s74bsvlj3t8ag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

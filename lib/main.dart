@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:soabanque/screens/connexion.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'data/auth.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
@@ -11,7 +19,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentfocus = FocusScope.of(context);
+        if (!currentfocus.hasPrimaryFocus &&
+            currentfocus.focusedChild != null) {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
+      },
+      child: Provider<AuthBase>(
+        create: (context) => Auth(),
+        child:  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -19,7 +37,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const Connexion(),
-    );
+      ),),);
   }
 }
 
@@ -35,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(),);
+      body: Container(),
+      );
   }
 }

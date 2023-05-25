@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:soabanque/data/auth.dart';
 import 'package:soabanque/screens/acceuil.dart';
 
 class Connexion extends StatefulWidget {
@@ -10,23 +13,39 @@ class Connexion extends StatefulWidget {
 
 class _ConnexionState extends State<Connexion> {
    bool _Obsure = true;
+  TextEditingController emailCtrl = TextEditingController();
+  TextEditingController passwordCtrl = TextEditingController();
+  bool _isLoading = false;
+
+  void _submit(context) async {
+    try {
+      setState(() => _isLoading = true);
+      final auth = Provider.of<AuthBase>(context, listen: false);
+      await auth.signInWithEmailAndPassword(
+          emailCtrl.text, passwordCtrl.text);
+      Navigator.push(context,MaterialPageRoute(builder: (context) => AccueilPage()));
+    } on FirebaseAuthException catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              child: Image.asset('assets/Icons/logoSOA.png', fit: BoxFit.cover,),
-            ),
+            Image.asset('assets/Icons/logoSOA.png', fit: BoxFit.cover,),
             
-            Text('CONNEXION', style: TextStyle(fontSize: 30),),
+            const Text('CONNEXION', style: TextStyle(fontSize: 30),),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(
                 width: 400,
                 child: TextFormField(
+                  controller: emailCtrl,
                   decoration: InputDecoration(
+                    
                     hintText: 'Entrer votre Email',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20)
@@ -40,6 +59,7 @@ class _ConnexionState extends State<Connexion> {
               child: Container(
                 width: 400,
                 child: TextFormField(
+                  controller: passwordCtrl,
                   obscureText: !_Obsure,
                   decoration: InputDecoration(
                     hintText: 'Mot de passe ',
@@ -80,7 +100,7 @@ class _ConnexionState extends State<Connexion> {
                 child: Center(
                   child: TextButton(
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const AccueilPage()));
+                     _submit(context);
                     },
                     child: Text(
                       'CONNEXION',
