@@ -25,7 +25,7 @@ class _BottomState extends State<Bottom> {
               .push(MaterialPageRoute(builder: (context) => const Add_Screen()));
         },
         child: Icon(Icons.add, color: Colors.white,),
-        backgroundColor: Color.fromRGBO(15, 58, 90, 1),
+        backgroundColor: Color.fromRGBO(146, 188, 26, 1),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // bottomNavigationBar: BottomAppBar(

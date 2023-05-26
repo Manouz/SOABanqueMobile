@@ -98,7 +98,7 @@ class _Add_ScreenState extends State<Add_Screen> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Color.fromRGBO(15, 58, 90, 1),
+          color: Color.fromRGBO(146, 188, 26, 1),
         ),
         width: 120,
         height: 50,
