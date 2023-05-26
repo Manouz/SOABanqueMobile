@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:soabanque/screens/connexion.dart';
 
 import '../widgets/bouttonVert.dart';
+import 'activationScreen.dart';
 
 class IntroPage extends StatefulWidget {
   IntroPage({super.key});
@@ -77,7 +79,7 @@ class _IntroPageState extends State<IntroPage> {
             const Spacer(),
             BouttonVert(
               couleurunique: couleurunique,
-              laPage: IntroPage(),
+              laPage: Connexion(),
               leText: 'Oui, j\' un compte SOABanque',
               laHauteur: MediaQuery.of(context).size.height / 16,
               laLargeur: MediaQuery.of(context).size.height,
@@ -87,7 +89,7 @@ class _IntroPageState extends State<IntroPage> {
             ),
             BouttonVert(
               couleurunique: Colors.white,
-              laPage: IntroPage(),
+              laPage: ActivationScreen(),
               leText: 'Non, je suis nouveau à SOABanque',
               laHauteur: MediaQuery.of(context).size.height / 16,
               laLargeur: MediaQuery.of(context).size.height,

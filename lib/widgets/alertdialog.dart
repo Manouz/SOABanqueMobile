@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soabanque/screens/home.dart';
 
 class SuccesAlertDialog extends StatelessWidget {
   const SuccesAlertDialog({super.key});
@@ -40,7 +41,16 @@ class SuccesAlertDialog extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(100)
                                     ),
-                                    child: Center(child: Text("Valider",style: TextStyle(fontSize: 20,color: Colors.white),)))),
+                                    child: Center(
+                                      child: TextButton(
+                                        onPressed: (){
+                                            Navigator.push(context, MaterialPageRoute(builder: ((context) => Home())));
+                                        },
+                                        child: Text("Valider",style: TextStyle(fontSize: 20,color: Colors.white),)
+                                        )
+                                        )
+                                        )
+                                        ),
                             )
                          ],
                         ),
