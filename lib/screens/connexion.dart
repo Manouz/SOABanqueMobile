@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:soabanque/data/auth.dart';
-import 'package:soabanque/screens/acceuil.dart';
+import 'package:soabanque/widgets/bottomnavigationbar.dart';
+
+import 'home.dart';
+// import 'package:soabanque/screens/acceuil.dart';
 
 class Connexion extends StatefulWidget {
   const Connexion({super.key});
@@ -23,7 +26,7 @@ class _ConnexionState extends State<Connexion> {
       final auth = Provider.of<AuthBase>(context, listen: false);
       await auth.signInWithEmailAndPassword(
           emailCtrl.text, passwordCtrl.text);
-      Navigator.push(context,MaterialPageRoute(builder: (context) => AccueilPage()));
+      Navigator.push(context,MaterialPageRoute(builder: (context) => Bottom()));
     } on FirebaseAuthException catch (e) {
       print(e.toString());
     }
@@ -48,7 +51,7 @@ class _ConnexionState extends State<Connexion> {
                     
                     hintText: 'Entrer votre Email',
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)
+                      borderRadius: BorderRadius.circular(20)  
                     )
                   ),
                 ),
@@ -79,17 +82,10 @@ class _ConnexionState extends State<Connexion> {
                   ),
                 ),
               ),
-            ),
-            TextButton(
-              onPressed: (){}, 
-              child: Text(
-                'Mot de passe oublié?', 
-                 style: TextStyle(color: Colors.blue, fontSize: 15, fontStyle: FontStyle.italic),
-              )
-              ),
+            ), 
             
             Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(30.0),
               child: Container(
                 width: 229,
                 height: 52.91,
@@ -102,7 +98,7 @@ class _ConnexionState extends State<Connexion> {
                     onPressed: (){
                      _submit(context);
                     },
-                    child: Text(
+                    child: const Text(
                       'CONNEXION',
                       style: TextStyle(fontSize: 15, color: Colors.white),
 
@@ -112,19 +108,6 @@ class _ConnexionState extends State<Connexion> {
                  
                 ),
               )
-              //  TextButton(
-              //   style: TextButton.styleFrom(
-              //     backgroundColor: Color.fromARGB(255, 101, 198, 16),
-              //     minimumSize:Size(250, 50),
-
-                
-              //   ),
-              //   onPressed: (){}, 
-              //   child: Text(
-              //     'CONNEXION',
-              //     style: TextStyle(fontSize: 15, color: Colors.white),
-              //   )
-              //   ),
               )
           ],
       
