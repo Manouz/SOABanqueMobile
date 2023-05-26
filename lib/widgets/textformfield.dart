@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 
 class Textformfield extends StatelessWidget {
   final String Label;
   final Icon? icn;
+  final Controller ctrl;
   const Textformfield({required this.Label, this.icn});
 
   @override
@@ -15,10 +16,6 @@ class Textformfield extends StatelessWidget {
     );
   }
 }
-
-
-
-
 
 class DateText extends StatefulWidget {
   final String Label;
@@ -42,7 +39,7 @@ class _DateTextState extends State<DateText> {
         return;
       }
       setState(() {
-        _datesCtrl.text = picked.toString(); 
+        _datesCtrl.text = picked.toString();
       });
     });
   }
@@ -62,22 +59,69 @@ class _DateTextState extends State<DateText> {
 
   @override
   Widget build(BuildContext context) {
-    return  
-     
-    Padding(
-      padding: const EdgeInsets.only(left:38.0,right: 38),
+    return Padding(
+      padding: const EdgeInsets.only(left: 38.0, right: 38),
       child: TextField(
-          controller: _datesCtrl,
-          onTap: _selectDate,
-          decoration:
-              InputDecoration(label: Text(widget.Label), suffixIcon: widget.icn),
-        ),
-    )
-    ;
-      
-    
+        controller: _datesCtrl,
+        onTap: _selectDate,
+        decoration:
+            InputDecoration(label: Text(widget.Label), suffixIcon: widget.icn),
+      ),
+    );
   }
 }
 
+class DateTextt extends StatefulWidget {
+  final String Label;
+  final Icon? icn;
+  const DateTextt({required this.Label, this.icn});
 
+  @override
+  State<DateTextt> createState() => _DateTexttState();
+}
 
+class _DateTexttState extends State<DateTextt> {
+  TextEditingController _datestCtrl = TextEditingController();
+  void _selectDate() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1690),
+            lastDate: DateTime.now())
+        .then((picked) {
+      if (picked == null) {
+        return;
+      }
+      setState(() {
+        _datestCtrl.text = picked.toString();
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _datestCtrl = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _datestCtrl.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 38.0, right: 38),
+      child: TextField(
+        controller: _datestCtrl,
+        onTap: _selectDate,
+        decoration:
+            InputDecoration(label: Text(widget.Label), suffixIcon: widget.icn),
+      ),
+    );
+  }
+}
+ */

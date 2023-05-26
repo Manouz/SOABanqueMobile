@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soabanque/screens/identite.dart';
 import 'package:soabanque/widgets/boutton.dart';
+import 'package:soabanque/widgets/entetePage.dart';
 //import 'package:country_picker/country_picker.dart';
 import 'package:soabanque/widgets/textformfield.dart';
 import 'package:soabanque/widgets/textlink.dart';
@@ -13,20 +14,53 @@ class ActivationScreen extends StatefulWidget {
 }
 
 class _ActivationScreenState extends State<ActivationScreen> {
-  late TextEditingController _controller;
+  TextEditingController _controller = TextEditingController();
+  TextEditingController _nom = TextEditingController();
+  TextEditingController _date = TextEditingController();
+  TextEditingController _prenoms = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _mdp = TextEditingController();
 
   String? monchoix = "Masculin";
+
+void _selectDate() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1690),
+            lastDate: DateTime.now())
+        .then((picked) {
+      if (picked == null) {
+        return;
+      }
+      setState(() {
+        _date.text = picked.toString();
+      });
+    });
+  }
+
+
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController();
+    _nom = TextEditingController();
+    _date = TextEditingController();
+    _prenoms = TextEditingController();
+    _email = TextEditingController();
+    _mdp = TextEditingController();
+    
   }
 
   @override
   void dispose() {
     _controller.dispose();
-
+    _nom.dispose();
+    _date.dispose();
+    _prenoms.dispose();
+    _email.dispose();
+_mdp.dispose();
     super.dispose();
   }
 
@@ -38,38 +72,49 @@ class _ActivationScreenState extends State<ActivationScreen> {
           "Renseignements Personnel",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color.fromRGBO(146, 188, 26, 1),
+        backgroundColor: Color.fromRGBO(0, 146, 255, 1),
       ),
       body: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Row(
-                children: [
-                  Text(
-                    "Renseignements Personnels",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
+           entetePage(h4: "Renseignements Personnels", h6: "Veuillez fournir les renseignements personnels ci-dessous",),
+            Padding(
+              padding: const EdgeInsets.only(left:28,right: 28),
+              child: TextField(
+                controller: _prenoms,
+                decoration: InputDecoration(label: Text("Prénoms")),
               ),
             ),
-           const Row(
-              children: [
-                 Text(
-                    "Veuillez remplir soigneusement tous les champs de renseignement indiqués ci-dessous",
-                    style: TextStyle(fontSize: 13)),
-              ],
+            Padding(
+              padding: const EdgeInsets.only(left:28,right:28),
+              child: TextField(
+                controller: _nom,
+                decoration: InputDecoration(label: Text("Nom")),
+              ),
             ),
-            const Textformfield(
-              Label: 'Prénoms',
+            Padding(
+              padding: const EdgeInsets.only(left:28,right: 28),
+              child: TextField(
+                controller: _date,
+                onTap: _selectDate,
+                decoration:
+                    InputDecoration(label: Text("Date de naissance(JJ/MM/AA)"), suffixIcon: Icon(Icons.date_range_outlined)),
+                  ),
             ),
-            const Textformfield(Label: 'Nom'),
-            DateText(
-              Label: 'Date de naissance (aaaa/mm/jj)',
-              icn: Icon(Icons.date_range_outlined),
+            Padding(
+              padding: const EdgeInsets.only(left:28,right:28),
+              child: TextField(
+                controller: _email,
+                decoration: InputDecoration(label: Text("Email")),
+              ),
             ),
-            const Textformfield(Label: "Entrez votre addresse Email"),
+            Padding(
+              padding: const EdgeInsets.only(left:28,right:28),
+              child: TextField(
+                controller: _mdp,
+                decoration: InputDecoration(label: Text("Mot de passe")),
+              ),
+            ),
             const Padding(
               padding: EdgeInsets.only(top: 14.0, left: 14),
               child: Row(
@@ -112,27 +157,16 @@ class _ActivationScreenState extends State<ActivationScreen> {
                 ],
               ),
             ),
-            Text("$monchoix"),
+            //Text("$monchoix"),
             const Padding(
               padding: EdgeInsets.only(top: 48.0),
               child: TextLink(clef: "Continuer"),
             ),
             const Padding(
               padding: EdgeInsets.only(top: 40),
-              child: Button(link: Identity()),
+              child: Button(link: Identity(), txt: 'Continuer',),
             )
-            /*  Padding(
-              padding: const EdgeInsets.only(left:38.0,right: 38),
-              child: ElevatedButton(
-                  onPressed: () {},
-                  child: Container(
-                    width: double.infinity,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100)
-                    ),
-                    child: Text("Connexion"))),
-            ) */
+          
           ],
         ),
       ),
