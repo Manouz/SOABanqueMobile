@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:soabanque/data/utlity.dart';
 import 'package:soabanque/models/add_date.dart';
+import 'package:soabanque/screens/connexion.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -141,10 +142,17 @@ class _HomeState extends State<Home> {
                         height: 40,
                         width: 40,
                         color: Color.fromRGBO(250, 250, 250, 0.1),
-                        child: Icon(
-                          Icons.message,
-                          size: 30,
-                          color: Colors.black,
+                        child: IconButton(
+                          onPressed: (){
+                            Navigator.push(context, 
+                            MaterialPageRoute(builder: (context)=> Connexion()));
+                          },
+                          icon: Icon(
+                            Icons.logout, 
+                           size: 30,
+                          color: Colors.black, 
+                           ),
+                        
                         ),
                       ),
                     ),
@@ -163,7 +171,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         Text(
-                          'Tejada Kane',
+                          'Chez SOABanque',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 20,
