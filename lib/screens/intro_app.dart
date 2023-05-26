@@ -61,7 +61,7 @@ class _IntroPageState extends State<IntroPage> {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                          "assets/images/photo_2023-05-17_12-57-24.jpg"),
+                          "assets/Icons/photo_2023-05-17_12-57-24.jpg"),
                       fit: BoxFit.cover)),
             ),
             const SizedBox(

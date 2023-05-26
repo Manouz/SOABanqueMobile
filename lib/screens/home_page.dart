@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+
 
 import '../widgets/bouttonVert.dart';
 import 'intro_app.dart';
@@ -42,8 +42,8 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage("assets/images/IMG_20230515_152247_126.jpg"), fit: BoxFit.cover)),
+        decoration: const BoxDecoration(
+            image: DecorationImage(image:  AssetImage("assets/Icons/IMG_20230515_152247_126.jpg"), fit: BoxFit.cover)),
         child: Column(
           children: [
             const Spacer(),
